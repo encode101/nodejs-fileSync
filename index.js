@@ -2,16 +2,16 @@ var server = require('./server.js');
 var connection = require('./connections.js');
 var console = require('console');
 var url = 'mongodb://localhost:27017/learnmongo';
+
 var aws = require('aws-sdk');
 var fs = require('fs');
 
 var syncFile = function(){
-	fs.watch('./sample.txt', function(err, data){
-		if(err){
-			console.error("Error Occoured:  "+err);
+	fs.watch('./docs/', function(data){
+		if(data){
+			console.error("Error Occoured:  "+data.stats());
 			return;
 		}
-		//console.error(data)
 	});
 }
 
